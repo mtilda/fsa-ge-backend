@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Institution:</strong>
+  <%= @program.institution_id %>
+</p>
+
+<p>
+  <strong>Program classification:</strong>
+  <%= @program.program_classification_id %>
+</p>
+
+<p>
+  <strong>Credential level:</strong>
+  <%= @program.credential_level %>
+</p>
+
+<%= link_to 'Edit', edit_program_path(@program) %> |
+<%= link_to 'Back', programs_path %>

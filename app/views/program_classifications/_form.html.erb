@@ -1,0 +1,27 @@
+<%= form_with(model: program_classification) do |form| %>
+  <% if program_classification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(program_classification.errors.count, "error") %> prohibited this program_classification from being saved:</h2>
+
+      <ul>
+        <% program_classification.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.number_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

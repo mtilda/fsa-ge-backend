@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @report.program_id %>
+</p>
+
+<p>
+  <strong>Year published:</strong>
+  <%= @report.year_published %>
+</p>
+
+<p>
+  <strong>Official pzf:</strong>
+  <%= @report.official_pzf %>
+</p>
+
+<p>
+  <strong>Appeal status:</strong>
+  <%= @report.appeal_status %>
+</p>
+
+<p>
+  <strong>Annual de ratio:</strong>
+  <%= @report.annual_de_ratio %>
+</p>
+
+<p>
+  <strong>Median annual debt:</strong>
+  <%= @report.median_annual_debt %>
+</p>
+
+<p>
+  <strong>Average annual earnings:</strong>
+  <%= @report.average_annual_earnings %>
+</p>
+
+<p>
+  <strong>Annual pzf:</strong>
+  <%= @report.annual_pzf %>
+</p>
+
+<p>
+  <strong>Discretionary de ratio:</strong>
+  <%= @report.discretionary_de_ratio %>
+</p>
+
+<p>
+  <strong>Average discretionary earnings:</strong>
+  <%= @report.average_discretionary_earnings %>
+</p>
+
+<p>
+  <strong>Discretionary pzf:</strong>
+  <%= @report.discretionary_pzf %>
+</p>
+
+<p>
+  <strong>Transitional de ratio:</strong>
+  <%= @report.transitional_de_ratio %>
+</p>
+
+<p>
+  <strong>Median transitional debt:</strong>
+  <%= @report.median_transitional_debt %>
+</p>
+
+<p>
+  <strong>Transitional pzf:</strong>
+  <%= @report.transitional_pzf %>
+</p>
+
+<p>
+  <strong>Transitional discretionary de ratio:</strong>
+  <%= @report.transitional_discretionary_de_ratio %>
+</p>
+
+<p>
+  <strong>Transitional discretionary pzf:</strong>
+  <%= @report.transitional_discretionary_pzf %>
+</p>
+
+<p>
+  <strong>Mean annual earnings:</strong>
+  <%= @report.mean_annual_earnings %>
+</p>
+
+<p>
+  <strong>Median annual earnings:</strong>
+  <%= @report.median_annual_earnings %>
+</p>
+
+<%= link_to 'Edit', edit_report_path(@report) %> |
+<%= link_to 'Back', reports_path %>

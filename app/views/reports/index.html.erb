@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Program</th>
+      <th>Year published</th>
+      <th>Official pzf</th>
+      <th>Appeal status</th>
+      <th>Annual de ratio</th>
+      <th>Median annual debt</th>
+      <th>Average annual earnings</th>
+      <th>Annual pzf</th>
+      <th>Discretionary de ratio</th>
+      <th>Average discretionary earnings</th>
+      <th>Discretionary pzf</th>
+      <th>Transitional de ratio</th>
+      <th>Median transitional debt</th>
+      <th>Transitional pzf</th>
+      <th>Transitional discretionary de ratio</th>
+      <th>Transitional discretionary pzf</th>
+      <th>Mean annual earnings</th>
+      <th>Median annual earnings</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.program_id %></td>
+        <td><%= report.year_published %></td>
+        <td><%= report.official_pzf %></td>
+        <td><%= report.appeal_status %></td>
+        <td><%= report.annual_de_ratio %></td>
+        <td><%= report.median_annual_debt %></td>
+        <td><%= report.average_annual_earnings %></td>
+        <td><%= report.annual_pzf %></td>
+        <td><%= report.discretionary_de_ratio %></td>
+        <td><%= report.average_discretionary_earnings %></td>
+        <td><%= report.discretionary_pzf %></td>
+        <td><%= report.transitional_de_ratio %></td>
+        <td><%= report.median_transitional_debt %></td>
+        <td><%= report.transitional_pzf %></td>
+        <td><%= report.transitional_discretionary_de_ratio %></td>
+        <td><%= report.transitional_discretionary_pzf %></td>
+        <td><%= report.mean_annual_earnings %></td>
+        <td><%= report.median_annual_earnings %></td>
+        <td><%= link_to 'Show', report %></td>
+        <td><%= link_to 'Edit', edit_report_path(report) %></td>
+        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Report', new_report_path %>

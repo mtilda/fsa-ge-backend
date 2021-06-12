@@ -1,0 +1,107 @@
+<%= form_with(model: report) do |form| %>
+  <% if report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+        <% report.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :program_id %>
+    <%= form.text_field :program_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_published %>
+    <%= form.number_field :year_published %>
+  </div>
+
+  <div class="field">
+    <%= form.label :official_pzf %>
+    <%= form.text_field :official_pzf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :appeal_status %>
+    <%= form.text_field :appeal_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :annual_de_ratio %>
+    <%= form.text_field :annual_de_ratio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :median_annual_debt %>
+    <%= form.text_field :median_annual_debt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :average_annual_earnings %>
+    <%= form.text_field :average_annual_earnings %>
+  </div>
+
+  <div class="field">
+    <%= form.label :annual_pzf %>
+    <%= form.text_field :annual_pzf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discretionary_de_ratio %>
+    <%= form.text_field :discretionary_de_ratio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :average_discretionary_earnings %>
+    <%= form.text_field :average_discretionary_earnings %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discretionary_pzf %>
+    <%= form.text_field :discretionary_pzf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transitional_de_ratio %>
+    <%= form.text_field :transitional_de_ratio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :median_transitional_debt %>
+    <%= form.text_field :median_transitional_debt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transitional_pzf %>
+    <%= form.text_field :transitional_pzf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transitional_discretionary_de_ratio %>
+    <%= form.text_field :transitional_discretionary_de_ratio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transitional_discretionary_pzf %>
+    <%= form.text_field :transitional_discretionary_pzf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mean_annual_earnings %>
+    <%= form.text_field :mean_annual_earnings %>
+  </div>
+
+  <div class="field">
+    <%= form.label :median_annual_earnings %>
+    <%= form.text_field :median_annual_earnings %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

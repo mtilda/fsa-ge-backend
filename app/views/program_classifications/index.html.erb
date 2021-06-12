@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Program Classifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @program_classifications.each do |program_classification| %>
+      <tr>
+        <td><%= program_classification.code %></td>
+        <td><%= program_classification.name %></td>
+        <td><%= link_to 'Show', program_classification %></td>
+        <td><%= link_to 'Edit', edit_program_classification_path(program_classification) %></td>
+        <td><%= link_to 'Destroy', program_classification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Program Classification', new_program_classification_path %>
