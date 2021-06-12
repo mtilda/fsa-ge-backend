@@ -19,8 +19,12 @@
         <td><%= program.program_classification_id %></td>
         <td><%= program.credential_level %></td>
         <td><%= link_to 'Show', program %></td>
-        <td><%= link_to 'Edit', edit_program_path(program) %></td>
-        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%
+=begin%>
+ <td><%= link_to 'Edit', edit_program_path(program) %></td>
+        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+<%
+=end%>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +32,8 @@
 
 <br>
 
-<%= link_to 'New Program', new_program_path %>
+<%
+=begin%>
+ <%= link_to 'New Program', new_program_path %> 
+<%
+=end%>

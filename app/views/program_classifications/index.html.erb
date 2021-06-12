@@ -17,8 +17,12 @@
         <td><%= program_classification.code %></td>
         <td><%= program_classification.name %></td>
         <td><%= link_to 'Show', program_classification %></td>
-        <td><%= link_to 'Edit', edit_program_classification_path(program_classification) %></td>
-        <td><%= link_to 'Destroy', program_classification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%
+=begin%>
+ <td><%= link_to 'Edit', edit_program_classification_path(program_classification) %></td>
+        <td><%= link_to 'Destroy', program_classification, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+<%
+=end%>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +30,8 @@
 
 <br>
 
-<%= link_to 'New Program Classification', new_program_classification_path %>
+<%
+=begin%>
+ <%= link_to 'New Program Classification', new_program_classification_path %> 
+<%
+=end%>
