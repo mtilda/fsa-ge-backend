@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_06_12_180539) do
   create_table "programs", force: :cascade do |t|
     t.bigint "institution_id", null: false
     t.bigint "program_classification_id", null: false
-    t.string "credential_level"
+    t.integer "credential_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["institution_id"], name: "index_programs_on_institution_id"
