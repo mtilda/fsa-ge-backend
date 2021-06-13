@@ -6,7 +6,8 @@ class CreateInstitutions < ActiveRecord::Migration[6.1]
       t.string :city
       t.string :state
       t.string :zip
-      t.string :type
+      t.string :sector
+      t.string :duration_of_programs
 
       t.timestamps
     end

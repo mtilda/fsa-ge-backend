@@ -12,6 +12,6 @@ class InstitutionsController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def query_params
-      params.permit(:opeid, :name, :city, :state, :zip, :type)
+      params.permit(:opeid, :name, :city, :state, :zip, :sector, :duration_of_programs)
     end
 end
