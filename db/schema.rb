@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_180539) do
+ActiveRecord::Schema.define(version: 2021_06_13_191631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,8 @@ ActiveRecord::Schema.define(version: 2021_06_12_180539) do
     t.string "city"
     t.string "state"
     t.string "zip"
-    t.string "type"
+    t.string "sector"
+    t.string "duration_of_programs"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["opeid"], name: "index_institutions_on_opeid", unique: true
@@ -32,7 +33,6 @@ ActiveRecord::Schema.define(version: 2021_06_12_180539) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["code"], name: "index_program_classifications_on_code", unique: true
   end
 
   create_table "programs", force: :cascade do |t|
@@ -41,12 +41,10 @@ ActiveRecord::Schema.define(version: 2021_06_12_180539) do
     t.integer "credential_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["institution_id"], name: "index_programs_on_institution_id"
-    t.index ["program_classification_id"], name: "index_programs_on_program_classification_id"
   end
 
   create_table "reports", force: :cascade do |t|
-    t.bigint "program_id", null: false
+    t.integer "program_id", null: false
     t.integer "year_published"
     t.string "official_pzf"
     t.string "appeal_status"
@@ -66,10 +64,9 @@ ActiveRecord::Schema.define(version: 2021_06_12_180539) do
     t.decimal "median_annual_earnings", precision: 10, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["program_id"], name: "index_reports_on_program_id"
   end
 
-  add_foreign_key "programs", "institutions"
-  add_foreign_key "programs", "program_classifications"
-  add_foreign_key "reports", "programs"
+  add_foreign_key "programs", "institutions", on_delete: :cascade
+  add_foreign_key "programs", "program_classifications", on_delete: :cascade
+  add_foreign_key "reports", "programs", on_delete: :cascade
 end

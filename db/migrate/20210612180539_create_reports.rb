@@ -1,7 +1,7 @@
 class CreateReports < ActiveRecord::Migration[6.1]
   def change
     create_table :reports do |t|
-      t.references :program, null: false, foreign_key: true
+      t.integer :program_id, null: false
       t.integer :year_published
       t.string :official_pzf
       t.string :appeal_status
@@ -19,7 +19,7 @@ class CreateReports < ActiveRecord::Migration[6.1]
       t.string :transitional_discretionary_pzf
       t.decimal :mean_annual_earnings, precision: 10, scale: 2
       t.decimal :median_annual_earnings, precision: 10, scale: 2
-
+      
       t.timestamps
     end
   end

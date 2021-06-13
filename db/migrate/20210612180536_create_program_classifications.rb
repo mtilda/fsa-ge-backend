@@ -6,6 +6,5 @@ class CreateProgramClassifications < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :program_classifications, :code, unique: true
   end
 end
