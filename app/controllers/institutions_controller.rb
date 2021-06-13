@@ -6,7 +6,7 @@ class InstitutionsController < ApplicationController
 
   # GET /institutions/1 or /institutions/1.json
   def show
-    @institution = Institution.find papams[:id]
+    @institution = Institution.find params[:id]
   end
 
   private

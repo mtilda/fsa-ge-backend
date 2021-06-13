@@ -6,7 +6,7 @@ class ProgramsController < ApplicationController
 
   # GET /programs/1 or /programs/1.json
   def show
-    @program = Program.find papams[:id]
+    @program = Program.find params[:id]
   end
 
   private
