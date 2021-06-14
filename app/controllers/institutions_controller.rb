@@ -1,7 +1,7 @@
 class InstitutionsController < ApplicationController
   # GET /institutions or /institutions.json
   def index
-    @institutions = Institution.where query_params
+    @institutions = Institution.where(query_params).take(100)
   end
 
   # GET /institutions/1 or /institutions/1.json

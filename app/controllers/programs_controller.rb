@@ -1,7 +1,7 @@
 class ProgramsController < ApplicationController
   # GET /programs or /programs.json
   def index
-    @programs = Program.where query_params
+    @programs = Program.where(query_params).take(100)
   end
 
   # GET /programs/1 or /programs/1.json
