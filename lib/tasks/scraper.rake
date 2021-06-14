@@ -12,7 +12,14 @@ namespace :scraper do
   #   %x`curl -o ./lib/assets/FSA-GE-2015.xls https://studentaid.gov/sites/default/files/GE-DMYR-2015-Final-Rates.xls`
   # end
 
-  task :injest, [:uri] => :environment do |t, args|
+  task :dump => :environment do
+    puts "Deleting all Institutions and Program Classifications"
+    puts "(cascade delete Programs and Reports)"
+    Institution.delete_all
+    ProgramClassification.delete_all
+  end
+
+  task :injest => :environment do
     # https://studentaid.gov/sites/default/files/GE-DMYR-2015-Final-Rates.xls
     puts "Injesting 2015 FSA Gainful Employment data!"
     data = Roo::Spreadsheet.open("./lib/assets/FSA-GE-2015.xls")
