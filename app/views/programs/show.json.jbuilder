@@ -1,13 +1,10 @@
 json.partial! "programs/program", program: @program
 json.classification do
-  json.cip_code @program.program_classification.code
-  json.cip_name @program.program_classification.name
+  json.partial! "program_classifications/program_classification", program_classification: @program.program_classification
 end
 json.institution do
-  json.id @program.institution.id
-  json.opeid @program.institution.opeid
-  json.name @program.institution.name
-  json.city @program.institution.city
-  json.state @program.institution.state
-  json.zip @program.institution.zip
+  json.partial! "institutions/institution", institution: @program.institution
+end
+json.reports @program.reports do |report|
+  json.partial! "reports/verbose", report: report
 end
