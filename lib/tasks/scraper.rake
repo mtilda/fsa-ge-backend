@@ -19,9 +19,9 @@ namespace :scraper do
     ProgramClassification.delete_all
   end
 
-  task :injest => :environment do
+  task :ingest => :environment do
     # https://studentaid.gov/sites/default/files/GE-DMYR-2015-Final-Rates.xls
-    puts "Injesting 2015 FSA Gainful Employment data!"
+    puts "Ingesting 2015 FSA Gainful Employment data!"
     data = Roo::Spreadsheet.open("./lib/assets/FSA-GE-2015.xls")
     puts "Successfully opened file at './lib/assets/FSA-GE-2015.xls'"
 
