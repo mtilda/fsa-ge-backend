@@ -1,14 +1,5 @@
 json.extract! report, :id, :year_published, :official_pzf, :appeal_status
 json.partial! "reports/summary", report: report
-json.program do
-  json.partial! "programs/program", program: report.program
-  json.program_classification do
-    json.partial! "program_classifications/program_classification", program_classification: report.program.program_classification
-  end
-  json.institution do
-    json.partial! "institutions/institution", institution: report.program.institution
-  end
-end
 json.discretionary do
   json.label "Debt-to-Earnings Discretionary Income Rate"
   json.description "The gainful employment measure of the ratio of the median annual loan payment amount incurred by students, for attendance in the GE program, who completed the GE Program compared to those same former students’ average discretionary annual income. Discretionary income is calculated as the higher of the mean or median annual earnings less 150% of the Poverty Guidelines for a one-person family in the contiguous United States."
