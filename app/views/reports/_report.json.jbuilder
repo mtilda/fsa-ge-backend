@@ -1,2 +1,9 @@
-json.extract! report, :id, :program_id, :year_published, :official_pzf, :appeal_status, :annual_de_ratio, :median_annual_debt, :average_annual_earnings, :annual_pzf, :discretionary_de_ratio, :average_discretionary_earnings, :discretionary_pzf, :transitional_de_ratio, :median_transitional_debt, :transitional_pzf, :transitional_discretionary_de_ratio, :transitional_discretionary_pzf, :mean_annual_earnings, :median_annual_earnings, :created_at, :updated_at
-json.url report_url(report, format: :json)
+json.extract! report, :id, :year_published, :official_pzf, :appeal_status
+json.currency_units "US"
+json.annual do
+  json.label "Debt-to-Earnings Annual Rate"
+  json.description "The gainful employment measure of the ratio of the median annual loan payment amount, incurred by students, for attendance in the GE program, who completed the GE Program in the cohort period compared to those same former students’ average annual earnings."
+  json.de_ratio report.annual_de_ratio
+  json.debt report.median_annual_debt
+  json.earnings report.average_annual_earnings
+end
