@@ -12,6 +12,6 @@ class ProgramClassificationsController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def query_params
-      params.permit(:code, :name)
+      params.except(:format).permit(:code, :name)
     end
 end

@@ -12,6 +12,6 @@ class ProgramsController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def query_params
-      params.permit(:institution_id, :program_classification_id, :credential_level)
+      params.except(:format).permit(:institution_id, :program_classification_id, :credential_level)
     end
 end
