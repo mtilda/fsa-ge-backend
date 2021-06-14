@@ -9,6 +9,8 @@ gem "rails", "~> 6.1.3", ">= 6.1.3.2"
 gem "pg", "~> 1.1"
 # Use Puma as the app server
 gem "puma", "~> 5.0"
+# Allow cross-origin resource sharing
+gem 'rack-cors'
 # Use roo-xls to read common spreadsheet types. Read more: https://github.com/roo-rb/roo-xls
 gem "roo-xls", "~> 1.2"
 # Use SCSS for stylesheets
