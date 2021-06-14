@@ -128,20 +128,20 @@ namespace :scraper do
         year_published: 2015,
         official_pzf: data["Official Program Pass/Zone/Fail"],
         appeal_status: "",
-        annual_de_ratio: data["Debt-to-Earnings Annual Rate"].to_f,
-        median_annual_debt: data["Debt-to-Earnings Annual Rate Numerator"].to_f,
-        average_annual_earnings: data["Debt-to-Earnings Annual Rate Denominator"].to_f,
+        annual_de_ratio: data["Debt-to-Earnings Annual Rate"].to_d,
+        median_annual_debt: data["Debt-to-Earnings Annual Rate Numerator"].to_d,
+        average_annual_earnings: data["Debt-to-Earnings Annual Rate Denominator"].to_d,
         annual_pzf: remove_asterisk(data["Debt-to-Earnings Annual Rate Pass/Fail/Zone"]),
-        discretionary_de_ratio: data["Debt-to-Earnings Discretionary Income Rate"].to_f,
-        average_discretionary_earnings: data["Debt-to-Earnings Discretionary Income Rate Denominator"].to_f,
+        discretionary_de_ratio: data["Debt-to-Earnings Discretionary Income Rate"].to_d,
+        average_discretionary_earnings: data["Debt-to-Earnings Discretionary Income Rate Denominator"].to_d,
         discretionary_pzf: remove_asterisk(data["Debt-to-Earnings Discretionary Income Rate Pass/Fail/Zone"]),
-        transitional_de_ratio: data["Debt-to-Earnings Transitional Rate"].to_f,
-        median_transitional_debt: data["Debt-to-Earnings Transitional Rate Numerator"].to_f,
+        transitional_de_ratio: data["Debt-to-Earnings Transitional Rate"].to_d,
+        median_transitional_debt: data["Debt-to-Earnings Transitional Rate Numerator"].to_d,
         transitional_pzf: remove_asterisk(data["Debt-to-Earnings Transitional Rate Pass/Fail/Zone"]),
-        transitional_discretionary_de_ratio: data["Debt-to-Earnings Transitional Discretionary Income Rate"].to_f,
+        transitional_discretionary_de_ratio: data["Debt-to-Earnings Transitional Discretionary Income Rate"].to_d,
         transitional_discretionary_pzf: remove_asterisk(data["Transitional Discretionary Income Rate Pass/Fail/Zone"]),
-        mean_annual_earnings: data["Mean  Annual Earnings From SSA"].to_f,
-        median_annual_earnings: data["Median Annual Earnings from SSA"].to_f
+        mean_annual_earnings: data["Mean  Annual Earnings From SSA"].to_d,
+        median_annual_earnings: data["Median Annual Earnings from SSA"].to_d
       }
       
       report = Report.find_by(program: program, year_published: 2015)
