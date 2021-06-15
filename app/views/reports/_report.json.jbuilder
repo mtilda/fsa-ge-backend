@@ -1,2 +1,0 @@
-json.extract! report, :id, :program_id, :year_published, :official_pzf, :appeal_status, :annual_de_ratio, :median_annual_debt, :average_annual_earnings, :annual_pzf, :discretionary_de_ratio, :average_discretionary_earnings, :discretionary_pzf, :transitional_de_ratio, :median_transitional_debt, :transitional_pzf, :transitional_discretionary_de_ratio, :transitional_discretionary_pzf, :mean_annual_earnings, :median_annual_earnings, :created_at, :updated_at
-json.url report_url(report, format: :json)

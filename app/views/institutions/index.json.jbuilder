@@ -1,1 +1,4 @@
-json.array! @institutions, partial: "institutions/institution", as: :institution
+json.count @institutions.size
+json.results @institutions do |institution|
+  json.partial! "institutions/institution", institution: institution
+end

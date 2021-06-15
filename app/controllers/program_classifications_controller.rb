@@ -1,7 +1,7 @@
 class ProgramClassificationsController < ApplicationController
   # GET /program_classifications or /program_classifications.json
   def index
-    @program_classifications = ProgramClassification.where query_params
+    @program_classifications = ProgramClassification.where(query_params).take(100)
   end
 
   # GET /program_classifications/1 or /program_classifications/1.json
@@ -12,6 +12,6 @@ class ProgramClassificationsController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def query_params
-      params.permit(:code, :name)
+      params.except(:format).permit(:code, :name)
     end
 end
