@@ -6,10 +6,10 @@ class ProgramsController < ApplicationController
     @programs = Program
       .joins(:institution)
       .where(@program_query)
-      .where("city LIKE ?", "%#{params[:city].upcase}%")
-      .where("state LIKE ?", "%#{params[:state].upcase}%")
-      .where("zip LIKE ?", "%#{params[:zip].upcase}%")
-      .where("name LIKE ?", "%#{params[:institution_name].upcase}%")
+      .where("city LIKE ?", "%#{(params[:city] || "").upcase}%")
+      .where("state LIKE ?", "%#{(params[:state] || "").upcase}%")
+      .where("zip LIKE ?", "%#{(params[:zip] || "").upcase}%")
+      .where("name LIKE ?", "%#{(params[:institution_name] || "").upcase}%")
       .where(params[:duration_of_programs] ? "duration_of_programs = '%#{params[:duration_of_programs].upcase}%'" : nil)
       .take(100)
   end
