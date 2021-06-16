@@ -1,6 +1,6 @@
 json.count @reports.size
 json.results @reports do |report|
-  json.partial! "reports/report", report: report
+  json.partial! "reports/summary", report: report
   json.program do
     json.partial! "programs/program", program: report.program
     json.program_classification do
