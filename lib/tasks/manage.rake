@@ -84,7 +84,7 @@ namespace :manage do
       institution = Institution.find_by(opeid: data["Institution Code (six-digit OPEID)"])
       if institution.nil?
         puts "NEW ~ Institution: opeid #{data["Institution Code (six-digit OPEID)"]}"
-        institution = Institution.create! new_institution_data
+        institution = Institution.new new_institution_data
       else
         puts "FOUND ~ Institution: opeid #{data["Institution Code (six-digit OPEID)"]}"
       end
@@ -99,7 +99,7 @@ namespace :manage do
       program_classification = ProgramClassification.find_by(cip_code: data["CIP CODE"])
       if program_classification.nil?
         puts "NEW ~ Program Classification: CIP code #{data["CIP CODE"]}"
-        program_classification = ProgramClassification.create! new_program_classification_data
+        program_classification = ProgramClassification.new new_program_classification_data
       else
         puts "FOUND ~ Program Classification: CIP code #{data["CIP CODE"]}}"
       end
@@ -114,15 +114,15 @@ namespace :manage do
 
       program = Program.find_by(institution: institution, program_classification: program_classification)
       if program.nil?
-        puts "NEW ~ Program: #{program_classification.name} @ #{institution.name}"
-        program = Program.create!(new_program_data)
+        puts "NEW ~ Program: #{program_classification.cip_name} @ #{institution.name}"
+        program = Program.new(new_program_data)
       else
-        puts "FOUND ~ Program: #{program_classification.name} @ #{institution.name}"
+        puts "FOUND ~ Program: #{program_classification.cip_name} @ #{institution.name}"
       end
 
       # Report
 
-      def remove_asterisk str
+      def parse_pzf str
         if str.nil?
           str
         else
@@ -130,33 +130,37 @@ namespace :manage do
         end
       end
 
+      def parse_number str
+        str.to_f.round(2) unless str == 'NA'
+      end
+
       new_report_data = {
         program: program,
         year_published: 2015,
-        official_pzf: data["Official Program Pass/Zone/Fail"],
-        appeal_status: "",
-        annual_de_ratio: data["Debt-to-Earnings Annual Rate"].to_d,
-        median_annual_debt: data["Debt-to-Earnings Annual Rate Numerator"].to_d,
-        average_annual_earnings: data["Debt-to-Earnings Annual Rate Denominator"].to_d,
-        annual_pzf: remove_asterisk(data["Debt-to-Earnings Annual Rate Pass/Fail/Zone"]),
-        discretionary_de_ratio: data["Debt-to-Earnings Discretionary Income Rate"].to_d,
-        average_discretionary_earnings: data["Debt-to-Earnings Discretionary Income Rate Denominator"].to_d,
-        discretionary_pzf: remove_asterisk(data["Debt-to-Earnings Discretionary Income Rate Pass/Fail/Zone"]),
-        transitional_de_ratio: data["Debt-to-Earnings Transitional Rate"].to_d,
-        median_transitional_debt: data["Debt-to-Earnings Transitional Rate Numerator"].to_d,
-        transitional_pzf: remove_asterisk(data["Debt-to-Earnings Transitional Rate Pass/Fail/Zone"]),
-        transitional_discretionary_de_ratio: data["Debt-to-Earnings Transitional Discretionary Income Rate"].to_d,
-        transitional_discretionary_pzf: remove_asterisk(data["Transitional Discretionary Income Rate Pass/Fail/Zone"]),
-        mean_annual_earnings: data["Mean  Annual Earnings From SSA"].to_d,
-        median_annual_earnings: data["Median Annual Earnings from SSA"].to_d
+        official_pzf:                         parse_pzf(        data["Official Program Pass/Zone/Fail"]),
+        appeal_status:                                          "",
+        annual_de_ratio:                      parse_number(     data["Debt-to-Earnings Annual Rate"]),
+        median_annual_debt:                   parse_number(     data["Debt-to-Earnings Annual Rate Numerator"]),
+        average_annual_earnings:              parse_number(     data["Debt-to-Earnings Annual Rate Denominator"]),
+        annual_pzf:                           parse_pzf(        data["Debt-to-Earnings Annual Rate Pass/Fail/Zone"]),
+        discretionary_de_ratio:               parse_number(     data["Debt-to-Earnings Discretionary Income Rate"]),
+        average_discretionary_earnings:       parse_number(     data["Debt-to-Earnings Discretionary Income Rate Denominator"]),
+        discretionary_pzf:                    parse_pzf(        data["Debt-to-Earnings Discretionary Income Rate Pass/Fail/Zone"]),
+        transitional_de_ratio:                parse_number(     data["Debt-to-Earnings Transitional Rate"]),
+        median_transitional_debt:             parse_number(     data["Debt-to-Earnings Transitional Rate Numerator"]),
+        transitional_pzf:                     parse_pzf(        data["Debt-to-Earnings Transitional Rate Pass/Fail/Zone"]),
+        transitional_discretionary_de_ratio:  parse_number(     data["Debt-to-Earnings Transitional Discretionary Income Rate"]),
+        transitional_discretionary_pzf:       parse_pzf(        data["Debt-to-Earnings Transitional Discretionary Income Rate Pass/Fail/Zone"]),
+        mean_annual_earnings:                 parse_number(     data["Mean  Annual Earnings From SSA"]),
+        median_annual_earnings:               parse_number(     data["Median Annual Earnings from SSA"])
       }
       
       report = Report.find_by(program: program, year_published: 2015)
       if report.nil?
-        puts "NEW ~ Report: #{program.program_classification.name} @ #{program.institution.name} in 2015"
-        Report.create! new_report_data
+        puts "NEW ~ Report: #{program.program_classification.cip_name} @ #{program.institution.name} in 2015"
+        Report.new new_report_data
       else
-        puts "FOUND ~ Report: #{program.program_classification.name} @ #{program.institution.name} in 2015"
+        puts "FOUND ~ Report: #{program.program_classification.cip_name} @ #{program.institution.name} in 2015"
       end
     end
   end
