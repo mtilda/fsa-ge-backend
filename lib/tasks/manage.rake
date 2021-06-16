@@ -4,13 +4,13 @@ require "roo-xls"
 # Ruby on Rails — Importing Data from an Excel File
 # https://blog.echobind.com/ruby-on-rails-importing-data-from-an-excel-file-b325b0fcfad6
 
-namespace :scraper do
+namespace :manage do
   desc "Scrape data from FSA Gainful Employment spreadsheets"
 
   # Only run on local from root directory
-  # task :download do
-  #   %x`curl -o ./lib/assets/FSA-GE-2015.xls https://studentaid.gov/sites/default/files/GE-DMYR-2015-Final-Rates.xls`
-  # end
+  task :download do
+    %x`curl -o ./lib/assets/FSA-GE-2015.xls https://studentaid.gov/sites/default/files/GE-DMYR-2015-Final-Rates.xls`
+  end
 
   task :dump => :environment do
     puts "Deleting all Institutions and Program Classifications"
