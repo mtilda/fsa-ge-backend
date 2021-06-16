@@ -92,16 +92,16 @@ namespace :manage do
       # PROGRAM CLASSIFICATION
 
       new_program_classification_data = {
-        cip_code: data["CIP Code"],
+        cip_code: data["CIP Code"].to_i,
         cip_name: data["CIP Name"]
       }
 
-      program_classification = ProgramClassification.find_by(cip_code: data["CIP CODE"])
+      program_classification = ProgramClassification.find_by(cip_code: new_program_classification_data[:code])
       if program_classification.nil?
-        puts "NEW ~ Program Classification: CIP code #{data["CIP CODE"]}"
+        puts "NEW ~ Program Classification: CIP code #{new_program_classification_data[:cip_code]}"
         program_classification = ProgramClassification.new new_program_classification_data
       else
-        puts "FOUND ~ Program Classification: CIP code #{data["CIP CODE"]}}"
+        puts "FOUND ~ Program Classification: CIP code #{new_program_classification_data[:cip_code]}}"
       end
 
       # PROGRAM
@@ -109,15 +109,15 @@ namespace :manage do
       new_program_data = {
         institution: institution,
         program_classification: program_classification,
-        credential_level: data["CIP Name"].to_i,
+        credential_level: data["Credential Level"].to_i,
       }
 
       program = Program.find_by(institution: institution, program_classification: program_classification)
       if program.nil?
-        puts "NEW ~ Program: #{program_classification.cip_name} @ #{institution.name}"
+        puts "NEW ~ Program: #{program_classification.cip_name[0, 10]} @ #{institution.name[0, 10]}"
         program = Program.new(new_program_data)
       else
-        puts "FOUND ~ Program: #{program_classification.cip_name} @ #{institution.name}"
+        puts "FOUND ~ Program: #{program_classification.cip_name[0, 10]} @ #{institution.name[0, 10]}"
       end
 
       # Report
@@ -157,11 +157,16 @@ namespace :manage do
       
       report = Report.find_by(program: program, year_published: 2015)
       if report.nil?
-        puts "NEW ~ Report: #{program.program_classification.cip_name} @ #{program.institution.name} in 2015"
-        Report.new new_report_data
+        puts "NEW ~ Report: #{program.program_classification.cip_name[0, 10]} @ #{program.institution.name[0, 10]} in 2015"
+        report = Report.new new_report_data
       else
-        puts "FOUND ~ Report: #{program.program_classification.cip_name} @ #{program.institution.name} in 2015"
+        puts "FOUND ~ Report: #{program.program_classification.cip_name[0, 10]} @ #{program.institution.name[0, 10]} in 2015"
       end
+
+    institution.save!
+    program_classification.save!
+    program.save!
+    report.save!
     end
   end
 end
