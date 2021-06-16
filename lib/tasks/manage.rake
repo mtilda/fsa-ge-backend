@@ -163,10 +163,10 @@ namespace :manage do
         puts "FOUND ~ Report: #{program.program_classification.cip_name[0, 10]} @ #{program.institution.name[0, 10]} in 2015"
       end
 
-    institution.save!
-    program_classification.save!
-    program.save!
-    report.save!
+      institution.save!
+      program_classification.save!
+      program.save!
+      report.save!
     end
   end
 end
