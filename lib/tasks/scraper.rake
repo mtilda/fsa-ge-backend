@@ -92,11 +92,11 @@ namespace :scraper do
       # PROGRAM CLASSIFICATION
 
       new_program_classification_data = {
-        code: data["CIP Code"],
-        name: data["CIP Name"]
+        cip_code: data["CIP Code"],
+        cip_name: data["CIP Name"]
       }
 
-      program_classification = ProgramClassification.find_by(code: data["CIP CODE"])
+      program_classification = ProgramClassification.find_by(cip_code: data["CIP CODE"])
       if program_classification.nil?
         puts "NEW ~ Program Classification: CIP code #{data["CIP CODE"]}"
         program_classification = ProgramClassification.create! new_program_classification_data
