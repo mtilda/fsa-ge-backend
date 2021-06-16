@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_13_191631) do
+ActiveRecord::Schema.define(version: 2021_06_16_001250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2021_06_13_191631) do
   end
 
   create_table "program_classifications", force: :cascade do |t|
-    t.integer "code"
-    t.string "name"
+    t.integer "cip_code"
+    t.string "cip_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
